@@ -1,23 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import ProductParent from './components/productParent';
+import { motion } from 'framer-motion';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+<motion.div 
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+className='header'>
+<h1>Pauer Tools</h1>
+</motion.div>
+<ProductParent/>
     </div>
   );
 }
