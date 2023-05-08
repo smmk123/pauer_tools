@@ -8,12 +8,13 @@ function App() {
 <motion.div 
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 1 }}
 className='header'>
 <h1>Pauer Tools</h1>
 </motion.div>
 <ProductParent/>
     </div>
+    
   );
 }
 

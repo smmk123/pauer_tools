@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ImagePanel from "./imagePanel";
 import "./product.css";
+import SlideInDiv from "./slideIn";
 
 
 export default function ProductParent() {
@@ -15,17 +16,17 @@ export default function ProductParent() {
     total: 0,
   });
 
-  const BACKPACK_PRICE = 0.01;
-  const CHARGER_PRICE = 0.05;
-  const BATTERY_PRICE = 0.1;
+  const BACKPACK_PRICE = 250.00;
+  const CHARGER_PRICE = 525.00;
+  const BATTERY_PRICE = 175.00;
   const CURRENCY = "$";
 
   const radioOptions = [
-    { name: "Single Drill", price: 1 },
-    { name: "2x Drill", price: 2 },
-    { name: "Single Drill, plus Saw", price: 3 },
-    { name: "2 Drill, plus Polisher", price: 4 },
-    { name: "2 Drill, plus Saw, and Polisher", price: 5 },
+    { name: "Single Drill", price: 100 },
+    { name: "2x Drill", price: 200 },
+    { name: "Single Drill, plus Saw", price: 300 },
+    { name: "2 Drill, plus Polisher", price: 400 },
+    { name: "2 Drill, plus Saw, and Polisher", price: 500 },
   ];
 
   function handleSubmit(e) {
@@ -63,10 +64,17 @@ export default function ProductParent() {
   };
 
   const handleBatteriesChange = (e) => {
+    if(e.target.value<1){
+      setOrder((values) => ({
+        ...values,
+        batteries: 1,
+      }));
+    }
+    else{
     setOrder((values) => ({
       ...values,
       batteries: e.target.value,
-    }));
+    }));}
   };
   const handleChargerChange = (e) => {
     setOrder((values) => ({
@@ -83,8 +91,10 @@ export default function ProductParent() {
   return (
     <div className="container">
       {getTotal()}
+
+      <SlideInDiv direction="left">
       <div className="selection-panel">
-        <h2>Options</h2>
+        <h1>Options</h1>
         <form>
           <ul className="tool-list">
             {radioOptions.map((radio) => (
@@ -110,8 +120,8 @@ export default function ProductParent() {
               type="number"
               value={order.batteries}
               onChange={handleBatteriesChange}
-            />
-            battery subtotal:{CURRENCY}
+            /><br></br>
+            Battery subtotal:{CURRENCY}
             {batteryTotal().toFixed(2)}
           </label>
           <div></div>
@@ -142,6 +152,9 @@ export default function ProductParent() {
           <button onClick={handleSubmit}>Add to Cart</button>
         </form>
       </div>
+      </SlideInDiv>
+
+      <SlideInDiv direction="lright">
       <div className="image-panel">
         <ImagePanel
           name={order.name}
@@ -150,6 +163,8 @@ export default function ProductParent() {
           batteries={order.batteries}
         />
       </div>
+      </SlideInDiv>
+
     </div>
   );
 }

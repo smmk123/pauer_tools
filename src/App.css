@@ -3,12 +3,27 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 35vmin;
   pointer-events: none;
 }
 
 h1{
   font-family: bauer;
+  color: #f50000;
+  font-weight: bold;
+  text-shadow: 
+    0 1px 0 #ac0202, 
+    0 2px 0 #800000, 
+    0 3px 0 #6b0000, 
+    0 4px 0 #630000, 
+    0 5px 0 #530000, 
+    0 6px 1px rgba(0,0,0,.1), 
+    0 0 5px rgba(0,0,0,.1), 
+    0 1px 3px rgba(0,0,0,.3), 
+    0 3px 5px rgba(0,0,0,.2), 
+    0 5px 10px rgba(0,0,0,.25), 
+    0 10px 10px rgba(0,0,0,.2), 
+    0 20px 20px rgba(0,0,0,.15);
 }
 
 .header {
@@ -26,8 +41,4 @@ h1{
 @font-face {
   font-family: bauer;
   src: url(../public/BAUER.TTF);
-}
-@font-face {
-  font-family: kevlar;
-  src: url(../public/KevlarUnderwear.ttf);
 }
